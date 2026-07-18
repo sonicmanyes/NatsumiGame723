@@ -5580,14 +5580,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b1a61122ba74814b11d57de247d0d4d, type: 3}
   m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::ScrollingBackground
-  backgroundSprite: {fileID: 21300000, guid: 4ed2084f00564f95b8b7f61de36a8660, type: 3}
+  backgroundSprite: {fileID: 21300000, guid: 835d5027bacc46d79bbd064eb4250424, type: 3}
   player: {fileID: 1575016166}
   sortingOrder: -100
   startDistance: 3
   scrollSpeed: 0.08
   maxScrollOffset: 3
-  groundLineFromBottom: 0.12
-  groundWorldY: -3
+  verticalOffset: 0
 --- !u!114 &519420035
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -13,9 +13,8 @@ public class ScrollingBackground : MonoBehaviour
     [SerializeField, Min(0f)] private float scrollSpeed = 0.08f;
     [SerializeField, Min(0f)] private float maxScrollOffset = 3f;
 
-    [Header("地面の位置合わせ")]
-    [SerializeField, Range(0f, 1f)] private float groundLineFromBottom = 0.12f;
-    [SerializeField] private float groundWorldY = -3f;
+    [Header("縦位置")]
+    [SerializeField] private float verticalOffset = 0f;
 
     private Camera targetCamera;
     private Transform backgroundTransform;
@@ -78,10 +77,8 @@ public class ScrollingBackground : MonoBehaviour
         float scale = Mathf.Max(cameraHeight / spriteSize.y, requiredWidth / spriteSize.x);
         backgroundTransform.localScale = new Vector3(scale, scale, 1f);
 
-        // 画像内の草地ラインをゲーム内の地面Y座標へ合わせる。
-        float scaledHeight = spriteSize.y * scale;
-        float localGroundY = groundWorldY - transform.position.y;
-        backgroundLocalY = localGroundY + scaledHeight * (0.5f - groundLineFromBottom);
+        // 遠景だけの画像なので、地面へ合わせずカメラ中央を基準に配置する。
+        backgroundLocalY = verticalOffset;
         backgroundTransform.localPosition = new Vector3(0f, backgroundLocalY, 10f);
     }
 }
