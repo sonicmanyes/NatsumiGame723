@@ -13,6 +13,8 @@ public class PlayerMove : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer sr;
     private Animator animator;
+    [SerializeField, Range(0f, 1f)]
+    private float jumpCutMultiplier = 0.46f;
     public bool isGround = false;
 
     void Start()
@@ -60,6 +62,14 @@ public class PlayerMove : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpPower);
             isGround = false;
+        }
+        //ジャンプキーを早く離したら上昇を弱める
+        if(Input.GetKeyUp(KeyCode.Space) && rb.linearVelocity.y > 0f)
+        {
+            rb.linearVelocity = new Vector2(
+                rb.linearVelocity.x,
+                rb.linearVelocity.y * jumpCutMultiplier
+                );
         }
     }
 
